@@ -6,3 +6,11 @@ group: !include groups.yaml
 automation: !include automations.yaml
 script: !include scripts.yaml
 scene: !include scenes.yaml
+
+sensor:
+  - platform: command_line
+    name: PingToRouter
+    #Сделать ping, отсечь одну строку, в ней выбрать блок со временем и выбрать значение времени
+    command: ping -c 1 192.168.178.1 | grep 64 -m 1 | cut -d ' ' -f 7 | cut -d '=' -f 2
+    value_template: '{{ value }}'
+    unit_of_measurement: "ms"

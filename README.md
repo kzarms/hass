@@ -23,4 +23,10 @@ scp .homeassistant/ <username@hostname>:/home/homeassistant/.homeassistant/
 
 scp .homeassistant/configuration.yaml <username@hostname>:/home/homeassistant/.homeassistant/configuration.yaml
 
+# Test config and restart
+
+hass --script check_config
+pkill hass
+hass --daemon
+
 ```
