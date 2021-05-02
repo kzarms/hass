@@ -1,3 +1,4 @@
+[![CI](https://github.com/kzarms/hass/actions/workflows/testing.yml/badge.svg)](https://github.com/kzarms/hass/actions/workflows/testing.yml)
 # hass
 My home automation
 
