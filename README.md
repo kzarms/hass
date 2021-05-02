@@ -29,4 +29,7 @@ hass --script check_config
 pkill hass
 hass --daemon
 
+
+flake8 .homeassistant/configuration.yaml --count --show-source
+
 ```

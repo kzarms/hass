@@ -1,19 +1,19 @@
 
 # Configure a default setup of Home Assistant (frontend, api, etc)
 homeassistant:
-  name: Home
-  temperature_unit: C
-  unit_system: metric
-  time_zone: Europe/Berlin
+    name: Home
+    temperature_unit: C
+    unit_system: metric
+    time_zone: Europe/Berlin
 
 # Enable services
-frontend:
-history:
-logbook:
-sun:
+frontend:  # noqa: E112
+history:   # noqa: E112
+logbook:   # noqa: E112
+sun:       # noqa: E112
 
 http:
-  server_port: 8123
+    server_port: 8123
 
 # group: !include groups.yaml
 # automation: !include automations.yaml
@@ -21,9 +21,15 @@ http:
 # scene: !include scenes.yaml
 
 sensor:
-  - platform: command_line
-    name: PingToRouter
-    #Сделать ping, отсечь одну строку, в ней выбрать блок со временем и выбрать значение времени
-    command: ping -c 1 192.168.178.1 | grep 64 -m 1 | cut -d ' ' -f 7 | cut -d '=' -f 2
+  - name: PingToRouter
+    platform: command_line
+    # Ping, find one line, cut only ms values
+    command: ping -c 1 192.168.178.1 | grep 64 -m 1 | cut -d ' ' -f 7 | cut -d '=' -f 2  # noqa: E225, E501
+    value_template: '{{ value }}'
+    unit_of_measurement: "ms"
+
+  - name: PingGoogle
+    platform: command_line
+    command: ping -c 1 8.8.8.8 | grep 64 -m 1 | cut -d ' ' -f 7 | cut -d '=' -f 2  # noqa: E225, E501
     value_template: '{{ value }}'
     unit_of_measurement: "ms"
