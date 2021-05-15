@@ -33,3 +33,10 @@ sensor:
     command: ping -c 1 8.8.8.8 | grep 64 -m 1 | cut -d ' ' -f 7 | cut -d '=' -f 2  # noqa: E225, E501
     value_template: '{{ value }}'
     unit_of_measurement: "ms"
+
+# Light
+yeelight:
+  devices:
+    192.168.178.33:
+      name: Living Room
+      transition: 1000

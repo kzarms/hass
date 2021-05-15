@@ -10,7 +10,7 @@ ssh-copy-id -i <username@hostname>
 
 sudo -u homeassistant -H -s
 cd /srv/homeassistant
-sudo python3.8 -m venv .
+python3.8 -m venv .
 source bin/activate
 
 ```
